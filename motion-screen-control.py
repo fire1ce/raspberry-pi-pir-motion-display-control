@@ -8,11 +8,10 @@ pir = MotionSensor(17)
 
 while True:
 
-    pir.wait_for_motion()
-    print("Motion detected!")
-
-    pir.wait_for_no_motion(10)
-    print("no motion for 10 seconds")
+    if pir.wait_for_motion():
+        print("Motion detected!")
+    if pir.wait_for_no_motion(10):
+        print("no motion for 10 seconds")
 
 
 pause()
