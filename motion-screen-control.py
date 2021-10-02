@@ -5,11 +5,15 @@ from signal import pause
 import os
 
 
-pir = MotionSensor(17)
-pir.wait_for_motion()
-print("Motion detected!")
+def motion():
+    motion.wait_for_motion
+    print("Motion detected!")
 
-pir.wait_for_no_motion(10)
+
+motion.wait_for_no_motion(10)
 print("no motion for 10 seconds")
+
+
+MotionSensor(17) = motion
 
 pause()
