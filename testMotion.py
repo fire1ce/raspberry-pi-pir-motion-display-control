@@ -4,8 +4,8 @@ from threading import Timer
 import os
 
 pir = MotionSensor(17)
-pir.when_motion():
-    print("works")
+pir.when_motion()
+print("works")
 
 # def screenOff():
 #     print("turning the screen off")
