@@ -16,20 +16,19 @@ def newTimer():
     print("newTimer")
     global timer
     timer = Timer(10.0, screenOff())
-    timer.start()
 
 
 newTimer()
 
 
 def screenOn():
-    timer.cancel()
-    print("timerCancel")
+    # timer.cancel()
+    # print("timerCancel")
     newTimer()
     print("Motion, turning the screen on")
 
 
-while(True):
+while True:
     pir.when_motion = screenOn
 
 pause()
