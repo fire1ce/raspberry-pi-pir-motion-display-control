@@ -8,16 +8,16 @@ import os
 pir = MotionSensor(17)
 
 
+def screenOff():
+    print("turning the screen off")
+
+
 def newTimer():
     global timer
     timer = Timer(10.0, screenOff)
 
 
 newTimer()
-
-
-def screenOff():
-    print("turning the screen off")
 
 
 def screenOn():
