@@ -10,7 +10,8 @@ def screenOn():
     print("Motion, turning the screen on")
 
 
-pir.when_motion = screenOn
+while(True):
+    pir.when_motion = screenOn
 
 
 # def screenOff():
@@ -30,7 +31,5 @@ pir.when_motion = screenOn
 #     newTimer()
 #     print("Motion, turning the screen on")
 
-
-# while(True):
 
 #     screenOn()
