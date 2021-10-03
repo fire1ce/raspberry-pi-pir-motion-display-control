@@ -13,6 +13,7 @@ def screenOff():
 
 
 def newTimer():
+    print("newTimer")
     global timer
     timer = Timer(10.0, screenOff)
 
@@ -22,11 +23,13 @@ newTimer()
 
 def screenOn():
     timer.cancel()
+    print("timerCancel")
     newTimer()
     print("Motion, turning the screen on")
 
 
 while(True):
+    print("InsideWhile")
     pir.when_motion = screenOn
 
 
