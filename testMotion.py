@@ -4,8 +4,14 @@ from threading import Timer
 import os
 
 pir = MotionSensor(17)
-pir.when_motion()
-print("works")
+
+
+def screenOn():
+    print("Motion, turning the screen on")
+
+
+pir.when_motion = screenOn
+
 
 # def screenOff():
 #     print("turning the screen off")
