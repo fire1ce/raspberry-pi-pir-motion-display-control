@@ -4,7 +4,7 @@ from threading import Timer
 from subprocess import run
 
 
-pir = MotionSensor(4) ## PIR Sensor on GPIO4 pin 7 (5v, Ground)
+pir = MotionSensor(4) ## PIR Sensor on GPIO4 pin 7
 timer = None
 
 def turnDisplayOff(): ## Turns off the display after timer is ended
@@ -16,7 +16,7 @@ def newTimer():
     timer = Timer(10, turnDisplayOff) ## Number of seconds before turning the display off
     timer.start()
 
-def getDisplayStatus(): ## Return True is display is ON, False if display is off
+def getDisplayStatus(): ## Return True if display is ON, False if display is off
     vcgencmdDisplayPower = run(['vcgencmd', 'display_power'], capture_output=True, text=True).stdout.strip()
     if (vcgencmdDisplayPower == "display_power=1"):
         return True
@@ -31,6 +31,8 @@ def turnDisplayOn():
     if not (getDisplayStatus()):
         run(['vcgencmd', 'display_power', '1'])
         print("Turning the display On...")
+
+turnDisplayOn() ## Initial state Display ON, turns off when no motion
 
 while True:
     pir.when_motion = turnDisplayOn
