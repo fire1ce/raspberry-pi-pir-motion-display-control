@@ -29,7 +29,6 @@ def screenOn():
 
 
 while(True):
-    print("InsideWhile")
     pir.when_motion = screenOn
 
 
