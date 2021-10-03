@@ -8,6 +8,7 @@ pir = MotionSensor(4)
 timer = None
 
 def screenoff():
+    run(['vcgencmd', 'display_power' , '0'])
     print("screenoff")
 
 def newTimer():
@@ -29,8 +30,10 @@ def screenOn():
 
     timer.cancel()
     newTimer()
-    print("Motion, turning the screen on")
-    print(getScreenStatus())
+    if not (getScreenStatus()):
+        run(['vcgencmd', 'display_power', '1'])
+        print("turning the screen on")
+    print ("timer renew")
 
 while True:
     pir.when_motion = screenOn
