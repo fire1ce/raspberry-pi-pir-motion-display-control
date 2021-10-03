@@ -29,7 +29,7 @@ def screenOn():
 
 
 while(True):
-    pir.when_motion = screenOn
+    pir.when_motion = screenOn()
 
 
 pause()
