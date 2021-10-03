@@ -16,6 +16,7 @@ def newTimer():
     print("newTimer")
     global timer
     timer = Timer(10.0, screenOff)
+    timer.start()
 
 
 newTimer()
