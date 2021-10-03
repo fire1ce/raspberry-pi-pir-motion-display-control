@@ -2,17 +2,32 @@
 
 from gpiozero import MotionSensor
 from signal import pause
+from threading import Timer
 import os
 
 pir = MotionSensor(17)
 
-while True:
-    print("before motion")
-    if pir.wait_for_motion():
-        print("Motion detected!")
-    print("after motion")
-    if pir.wait_for_no_motion(10):
-        print("no motion for 10 seconds")
+
+def newTimer():
+    global timer
+    timer = Timer(10.0, screenOff)
+
+
+newTimer()
+
+
+def screenOff():
+    print("turning the screen off")
+
+
+def screenOn():
+    timer.cancel()
+    newTimer()
+    print("Motion, turning the screen on")
+
+
+while(True):
+    pir.when_motion(screenOn)
 
 
 pause()
