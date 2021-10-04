@@ -41,10 +41,9 @@ def turnDisplayOn():
         print("Turning the display On...")
 
 
-# turnDisplayOn()  # Initial state Display ON, turns off when no motion
-
+# Initial state Display ON, turns off when no motion
 newTimer()
-run(['vcgencmd', 'display_power', '1'])
+turnDisplayOn()
 
 pir.when_motion = restartTimer
 pause()
