@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import logging
 from threading import Timer
 from subprocess import getoutput, run, DEVNULL
