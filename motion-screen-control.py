@@ -19,9 +19,6 @@ def newTimer():
     timer.start()
 
 
-newTimer()
-
-
 def getDisplayStatus():  # Return True if display is ON, False if display is off
     vcgencmdDisplayPower = run(
         ['vcgencmd', 'display_power'], capture_output=True, text=True).stdout.strip()
@@ -47,6 +44,7 @@ def turnDisplayOn():
 # turnDisplayOn()  # Initial state Display ON, turns off when no motion
 
 newTimer()
-restartTimer()
+run(['vcgencmd', 'display_power', '1'])
+
 pir.when_motion = restartTimer
 pause()
