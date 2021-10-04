@@ -1,8 +1,8 @@
 #!/bin/bash
 
-sudo systemctl disable power_button.service
-sudo systemctl stop power_button.service
-sudo rm -rf /etc/systemd/system/power_button.service
-sudo rm -rf /usr/local/bin/power_button.py
+sudo systemctl disable motion-screen-control.service
+sudo systemctl stop motion-screen-control.service
+sudo rm -rf /etc/systemd/system/motion-screen-control.service
+sudo rm -rf /usr/local/bin/motion-screen-control.py
 
 echo "done."
