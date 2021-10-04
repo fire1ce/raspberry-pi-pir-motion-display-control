@@ -1,6 +1,7 @@
 from threading import Timer
 from subprocess import run
 from gpiozero import MotionSensor
+from signal import pause
 
 class Display:
   def status():
