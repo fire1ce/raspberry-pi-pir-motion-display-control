@@ -46,6 +46,7 @@ def turnDisplayOn():
 
 # turnDisplayOn()  # Initial state Display ON, turns off when no motion
 
+newTimer()
 restartTimer()
 pir.when_motion = restartTimer
 pause()
