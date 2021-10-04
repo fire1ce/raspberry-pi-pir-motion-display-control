@@ -29,7 +29,7 @@ curl https://raw.githubusercontent.com/fire1ce/raspberry-pi-pir-motion-display-c
 ## Uninstall
 
 ```bash
-curl https://github.com/fire1ce/raspberry-pi-pir-motion-display-control/blob/main/uninstall.sh | bash
+curl https://raw.githubusercontent.com/fire1ce/raspberry-pi-pir-motion-display-control/main/uninstall.sh | bash
 ```
 
 ## Default Behavior
