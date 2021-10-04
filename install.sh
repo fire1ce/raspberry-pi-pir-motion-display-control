@@ -10,7 +10,7 @@ fi
 sudo chmod +x motion-screen-control.py
 sudo mv motion-screen-control.py /usr/local/bin
 sudo mv motion-screen-control.service /etc/systemd/system
-sudo systemctl start main/motion-screen-control.service
-sudo systemctl enable main/motion-screen-control.service
+sudo systemctl start motion-screen-control.service
+sudo systemctl enable motion-screen-control.service
 
 echo "done."
