@@ -31,7 +31,7 @@ class Motion:
     self.timer = Timer(self.display_delay, self.display.turnOff)
 
   def onMotion(self):
-    if not self.display.status:
+    if not self.display.status():
       self.display.turnOn()
 
     self.resetTimer()
