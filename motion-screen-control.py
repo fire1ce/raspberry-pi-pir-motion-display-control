@@ -43,3 +43,4 @@ turnDisplayOn()  # Initial state Display ON, turns off when no motion
 
 
 pir.when_motion = turnDisplayOn
+pause()
