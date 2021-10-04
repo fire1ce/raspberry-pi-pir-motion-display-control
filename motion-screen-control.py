@@ -1,49 +1,40 @@
-from gpiozero import MotionSensor
-from signal import pause
 from threading import Timer
 from subprocess import run
+from gpiozero import MotionSensor
 
+class Display:
+  def status():
+    status = run(['vcgencmd', 'display_power'], capture_output=True, text=True).stdout.strip()
+    return status == "display_power=1"
 
-pir = MotionSensor(4)  # PIR Sensor on GPIO4 pin 7
-timer = None
+  def turnOn():
+    run(['vcgencmd', 'display_power', '1'])
 
-
-def turnDisplayOff():  # Turns off the display after timer is ended
+  def turnOff():
     run(['vcgencmd', 'display_power', '0'])
-    print("Turning the display Off...")
 
 
-def newTimer():
-    global timer  # Number of seconds before turning the display off
-    timer = Timer(60, turnDisplayOff)
-    timer.start()
+class Motion:
+  display = Display()
+
+  def __init__(self, gpio_pin, display_delay = 60):
+    self.display_delay = display_delay
+    self.pir = MotionSensor(gpio_pin)
+    self.pir.when_motion = self.display.turnOn
+    self.resetTimer()
+    pause()
+
+  def resetTimer(self):
+    if self.timer: 
+      self.timer.cancel()
+
+    self.timer = Timer(self.display_delay, self.display.turnOff)
+
+  def onMotion(self):
+    if not self.display.status:
+      self.display.turnOn()
+
+    self.resetTimer()
 
 
-def getDisplayStatus():  # Return True if display is ON, False if display is off
-    vcgencmdDisplayPower = run(
-        ['vcgencmd', 'display_power'], capture_output=True, text=True).stdout.strip()
-    if (vcgencmdDisplayPower == "display_power=1"):
-        return True
-    else:
-        return False
-
-
-def restartTimer():
-    timer.cancel()
-    newTimer()
-    print("Motion detected")
-    turnDisplayOn()
-
-
-def turnDisplayOn():
-    if not (getDisplayStatus()):
-        run(['vcgencmd', 'display_power', '1'])
-        print("Turning the display On...")
-
-
-# Initial state Display ON, turns off when no motion
-newTimer()
-turnDisplayOn()
-
-pir.when_motion = restartTimer
-pause()
+motion = Motion(gpio_pin=4, display_delay=60)
