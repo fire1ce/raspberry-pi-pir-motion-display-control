@@ -6,7 +6,7 @@ This script uses pin GPIO4(7) to read data from Motion (PIR) Sensor, Any 5v and 
 
 ![gpio layout](https://github.com/fire1ce/raspberry-pi-power-button/raw/main/gpio_layout.jpg)
 
-![raspberrypi-with-PIR-sensor](https://github.com/fire1ce/raspberry-pi-pir-motion-screen-control/raw/main/raspberrypi-with-PIR-sensor.jpg)
+![raspberrypi-with-PIR-sensor](https://github.com/fire1ce/raspberry-pi-pir-motion-display-control/raw/main/raspberrypi-with-PIR-sensor.jpg)
 
 ## Requirements
 
@@ -23,13 +23,13 @@ sudo apt install python3-gpiozero
 This will install the script as `service` and it will run at boot
 
 ```bash
-curl https://raw.githubusercontent.com/fire1ce/raspberry-pi-pir-motion-screen-control/main/install.sh | bash
+curl https://raw.githubusercontent.com/fire1ce/raspberry-pi-pir-motion-display-control/main/install.sh | bash
 ```
 
 ## Uninstall
 
 ```bash
-curl https://github.com/fire1ce/raspberry-pi-pir-motion-screen-control/blob/main/uninstall.sh | bash
+curl https://github.com/fire1ce/raspberry-pi-pir-motion-display-control/blob/main/uninstall.sh | bash
 ```
 
 ## Default Behavior
@@ -96,4 +96,4 @@ sudo systemctl status power_button.service
 ## Contributors
 
 Thanks to [Boris Berman
-](https://github.com/bermanboris/raspberry-pi-pir-motion-screen-control) for the script rewire from function to classes
+](https://github.com/bermanboris/raspberry-pi-pir-motion-display-control) for the script rewire from function to classes
