@@ -19,6 +19,9 @@ def newTimer():
     timer.start()
 
 
+newTimer()
+
+
 def getDisplayStatus():  # Return True if display is ON, False if display is off
     vcgencmdDisplayPower = run(
         ['vcgencmd', 'display_power'], capture_output=True, text=True).stdout.strip()
