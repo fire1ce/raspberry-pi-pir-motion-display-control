@@ -93,6 +93,7 @@ sudo systemctl restart power_button.service
 sudo systemctl status power_button.service
 ```
 
-## Contributors 2
+## Contributors
 
-Thanks to @bermanboris for the script rewire from function to classes
+Thanks to [Boris Berman
+](https://github.com/bermanboris/raspberry-pi-pir-motion-screen-control) for the script rewire from function to classes
