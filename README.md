@@ -6,7 +6,7 @@ This script uses pin GPIO4(7) to read data from Motion (PIR) Sensor, Any 5v and 
 
 ![gpio layout](https://github.com/fire1ce/raspberry-pi-power-button/raw/main/gpio_layout.jpg)
 
-![raspberrypi-with-button](https://github.com/fire1ce/raspberry-pi-power-button/raw/main/raspberrypi-with-PIR-sensor.jpg)
+![raspberrypi-with-PIR-sensor](https://github.com/fire1ce/raspberry-pi-pir-motion-screen-control/raw/main/raspberrypi-with-PIR-sensor.jpg)
 
 ## Requirements
 
