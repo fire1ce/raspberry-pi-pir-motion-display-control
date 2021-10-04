@@ -1,49 +1,67 @@
+import logging
+from threading import Timer
+from subprocess import getoutput, run, DEVNULL
 from gpiozero import MotionSensor
 from signal import pause
-from threading import Timer
-from subprocess import run
+
+class Display:
+  @staticmethod
+  def isTurnedOn():
+    status = getoutput("vcgencmd display_power")
+    isTurnedOn = status == "display_power=1"
+    logging.debug(f"[Display]: Is turned on: {isTurnedOn}")
+    return isTurnedOn
+
+  @staticmethod
+  def turnOn():
+    logging.debug("[Display]: Turning ON the display..")
+    run(['vcgencmd', 'display_power', '1'], stdout=DEVNULL)
+
+  @staticmethod
+  def turnOff():
+    logging.debug("[Display]: Turning OFF the display..")
+    run(['vcgencmd', 'display_power', '0'], stdout=DEVNULL)
 
 
-pir = MotionSensor(4)  # PIR Sensor on GPIO4 pin 7
-timer = None
+class Motion:
+  timer = None
 
-
-def turnDisplayOff():  # Turns off the display after timer is ended
-    run(['vcgencmd', 'display_power', '0'])
-    print("Turning the display Off...")
-
-
-def newTimer():
-    global timer  # Number of seconds before turning the display off
-    timer = Timer(60, turnDisplayOff)
-    timer.start()
-
-
-def getDisplayStatus():  # Return True if display is ON, False if display is off
-    vcgencmdDisplayPower = run(
-        ['vcgencmd', 'display_power'], capture_output=True, text=True).stdout.strip()
-    if (vcgencmdDisplayPower == "display_power=1"):
-        return True
+  def __init__(self, gpio_pin, display_delay = 60, verbose = False):
+    if verbose == True:
+      logging.basicConfig(level=logging.DEBUG)
     else:
-        return False
+      logging.basicConfig(level=logging.INFO)
+
+    logging.info(f"[Motion]: Initializing - GPIO_PIN: {gpio_pin}, DISPLAY_DELAY: {display_delay}, VERBOSE: {verbose}")
+
+    if verbose == True:
+      logging.basicConfig(level=logging.DEBUG)
+
+    self.display_delay = display_delay
+    self.pir = MotionSensor(gpio_pin)
+    self.pir.when_motion = self.onMotion
+    self.resetTimer()
+    pause()
+
+  def resetTimer(self):
+    logging.debug("[Motion]: Resetting timer..")
+
+    if self.timer:
+      logging.debug("[Motion]: Old timer found! Destroying it!")
+      self.timer.cancel()
+
+    logging.debug(f"[Motion]: Setting timer for {self.display_delay}")
+    self.timer = Timer(self.display_delay, Display.turnOff)
+    self.timer.start()
+
+  def onMotion(self):
+    logging.debug("[Motion]: Motion detected!")
+
+    if Display.isTurnedOn() == False:
+      logging.debug("[Motion]: Display is off, turning it on!")
+      Display.turnOn()
+
+    self.resetTimer()
 
 
-def restartTimer():
-    timer.cancel()
-    newTimer()
-    print("Motion detected")
-    turnDisplayOn()
-
-
-def turnDisplayOn():
-    if not (getDisplayStatus()):
-        run(['vcgencmd', 'display_power', '1'])
-        print("Turning the display On...")
-
-
-# Initial state Display ON, turns off when no motion
-newTimer()
-turnDisplayOn()
-
-pir.when_motion = restartTimer
-pause()
+motion = Motion(gpio_pin=4, display_delay=10, verbose=True)
