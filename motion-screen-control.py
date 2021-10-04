@@ -28,9 +28,6 @@ def getDisplayStatus():  # Return True if display is ON, False if display is off
         return False
 
 
-newTimer()
-
-
 def turnDisplayOn():
     timer.cancel()
     newTimer()
