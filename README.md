@@ -1,4 +1,4 @@
-# Raspberry Pi Motion Screen Control based on Motion (PIR) Sensor
+# Raspberry Pi Display Control Based on Motion (PIR) Sensor
 
 ## Information
 
