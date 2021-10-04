@@ -7,7 +7,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=root
-ExecStart=/usr/bin/python3 /usr/local/bin/motion-screen-control.py
+ExecStart=/usr/bin/python3 /usr/local/bin/motion-display-control.py
 
 [Install]
 WantedBy=multi-user.target

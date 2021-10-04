@@ -45,7 +45,7 @@ curl https://raw.githubusercontent.com/fire1ce/raspberry-pi-pir-motion-display-c
 File
 
 ```bash
-/usr/local/bin/motion-screen-control.py
+/usr/local/bin/motion-display-control.py
 ```
 
 You can change Data Pin of the PIR Sensor at __gpio_pin__ value
@@ -70,7 +70,7 @@ In order to allow verbose debug change the following
 File
 
 ```bash
-/usr/local/bin/motion-screen-control.py
+/usr/local/bin/motion-display-control.py
 ```
 
 Line
