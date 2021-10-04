@@ -20,7 +20,7 @@ class Motion:
   def __init__(self, gpio_pin, display_delay = 60):
     self.display_delay = display_delay
     self.pir = MotionSensor(gpio_pin)
-    self.pir.when_motion = self.display.turnOn
+    self.pir.when_motion = self.onMotion
     self.resetTimer()
     pause()
 
