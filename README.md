@@ -78,7 +78,7 @@ Line
 Set __verbose__ value to __True__
 
 ```python
-motion = Motion(gpio_pin=4, display_delay=60, verbose=False)
+motion = Motion(gpio_pin=4, display_delay=60, verbose=True)
 ```
 
 Restart the service to apply changes
@@ -96,4 +96,4 @@ sudo systemctl status power_button.service
 ## Contributors
 
 Thanks to [Boris Berman
-](https://github.com/bermanboris/raspberry-pi-pir-motion-display-control) for the script rewire from function to classes
+](https://github.com/bermanboris/raspberry-pi-pir-motion-display-control) for the script rewrite from function to classes
