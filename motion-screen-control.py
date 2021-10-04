@@ -41,5 +41,5 @@ def turnDisplayOn():
 
 turnDisplayOn()  # Initial state Display ON, turns off when no motion
 
-while True:
-    pir.when_motion = turnDisplayOn
+
+pir.when_motion = turnDisplayOn
