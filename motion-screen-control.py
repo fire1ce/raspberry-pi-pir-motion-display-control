@@ -34,6 +34,7 @@ newTimer()
 def turnDisplayOn():
     timer.cancel()
     newTimer()
+    print("I see you")
     if not (getDisplayStatus()):
         run(['vcgencmd', 'display_power', '1'])
         print("Turning the display On...")
