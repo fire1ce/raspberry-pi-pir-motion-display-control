@@ -10,7 +10,7 @@ This script uses pin GPIO4(7) to read data from Motion (PIR) Sensor, Any 5v and 
 
 ## Requirements
 
-* python3-gpiozero
+- python3-gpiozero
 
 Can be install via apt
 
@@ -34,7 +34,7 @@ curl https://raw.githubusercontent.com/fire1ce/raspberry-pi-pir-motion-display-c
 
 ## Default Behavior
 
-| __Condition__               | __Behavior__                        |
+| **Condition**               | **Behavior**                        |
 | --------------------------- | ----------------------------------- |
 | Motion while display is off | Turns on display for 60 sec         |
 | Motion while display is on  | Resets the timer for another 60 sec |
@@ -48,8 +48,8 @@ File
 /usr/local/bin/motion-display-control.py
 ```
 
-You can change Data Pin of the PIR Sensor at __gpio_pin__ value
-You can change Delay at __display_delay__ value
+You can change Data Pin of the PIR Sensor at **gpio_pin** value
+You can change Delay at **display_delay** value
 
 Line
 
@@ -75,7 +75,7 @@ File
 
 Line
 
-Set __verbose__ value to __True__
+Set **verbose** value to **True**
 
 ```python
 motion = Motion(gpio_pin=4, display_delay=60, verbose=True)
@@ -84,7 +84,7 @@ motion = Motion(gpio_pin=4, display_delay=60, verbose=True)
 Restart the service to apply changes
 
 ```bash
-sudo systemctl restart power_button.service
+sudo systemctl restart motion-display-control.service
 ```
 
 ## Check if service is running
