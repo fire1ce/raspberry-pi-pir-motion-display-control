@@ -90,7 +90,8 @@ sudo systemctl restart motion-display-control.service
 ## Check if service is running
 
 ```bash
-sudo systemctl status power_button.service
+sudo systemctl status motion-display-control.service
+
 ```
 
 ## Contributors
